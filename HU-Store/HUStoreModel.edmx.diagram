@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d8a3c0b347f14a8bb8d5b5f1832fb367" Name="Diagram1" >
+        <EntityTypeShape EntityType="HUStoreModel.Product" Width="1.5" PointX="1.5" PointY="0.5" />
+        <EntityTypeShape EntityType="HUStoreModel.User" Width="1.5" PointX="3.25" PointY="0.5" />
+        <EntityTypeShape EntityType="HUStoreModel.Order" Width="1.5" PointX="4.125" PointY="3.125" />
+        <AssociationConnector Association="HUStoreModel.UserOrder" />
+        <EntityTypeShape EntityType="HUStoreModel.OrderItems" Width="1.5" PointX="1.5" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="HUStoreModel.OrderOrderItems" />
+        <AssociationConnector Association="HUStoreModel.ProductOrderItems" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
