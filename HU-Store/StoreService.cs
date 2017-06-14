@@ -1,36 +1,45 @@
 ﻿using HU_Store;
+using HU_Store.Classes;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace StoreService
 {
     public class StoreService : IStoreService
     {
-        public List<Product> GetProducts()
-        {
-            return Store.GetProducts();
-        }
-
         public string Register(string username)
         {
-            string password = username;
+            return AUser.Register(username);
 
-            User newUser = new User()
-            {
-                Username = username,
-                Password = password
-            };
+        }
 
-            using (HUStoreModelContainer db = new HUStoreModelContainer())
-            {
-                var users = from user in db.UserSet
-                            select user;
+        public string Login(string username, string password)
+        {
+            return AUser.Login(username, password);
+        }
 
-                db.UserSet.Add(newUser);
-                db.SaveChanges();
-            }
+        public List<Product> GetProducts(string token)
+        {
+            return AUser.GetProducts(token);
+        }
 
-            return password;
+        public double GetBalance(string token)
+        {
+            return AUser.GetBalance(token);
+        }
+
+        public List<OrderList> GetOrders(string token)
+        {
+            return AUser.GetOrders(token);
+        }
+
+        public int Order(string token, List<ProductOrder> productOrders)
+        {
+            return AUser.Order(token, productOrders);
+        }
+
+        public OrderItemList GetOrderItems(string token, int orderId)
+        {
+            return AUser.GetOrderItems(token, orderId);
         }
     }
 }

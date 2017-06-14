@@ -39,6 +39,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Token" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Balance" Type="float" Nullable="false" DefaultValue="100" />
   </EntityType>
   <EntityType Name="OrderSet">
     <Key>
@@ -46,6 +48,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="OrderItemsSet">
     <Key>
@@ -131,7 +134,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="String" Nullable="false" annotation:StoreGeneratedPattern="None" />
           <Property Name="Password" Type="String" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="HUStoreModel.UserOrder" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Orders" Relationship="HUStoreModel.UserOrder" FromRole="User" ToRole="Order" />
+          <Property Name="Token" Type="String" Nullable="true" />
+          <Property Name="Balance" Type="Double" Nullable="false" DefaultValue="100" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -141,6 +146,7 @@
           <NavigationProperty Name="User" Relationship="HUStoreModel.UserOrder" FromRole="Order" ToRole="User" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="OrderItems" Relationship="HUStoreModel.OrderOrderItems" FromRole="Order" ToRole="OrderItems" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="None" />
         </EntityType>
         <Association Name="UserOrder">
           <End Type="HUStoreModel.User" Role="User" Multiplicity="1" />
@@ -212,6 +218,8 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -220,6 +228,7 @@
         <MappingFragment StoreEntitySet="OrderSet">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

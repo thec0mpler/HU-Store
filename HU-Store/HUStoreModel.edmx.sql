@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/07/2017 14:45:31
+-- Date Created: 06/13/2017 23:06:50
 -- Generated from EDMX file: C:\Users\jonat\documents\visual studio 2017\Projects\HU-Store\HU-Store\HUStoreModel.edmx
 -- --------------------------------------------------
 
@@ -61,14 +61,17 @@ GO
 CREATE TABLE [dbo].[UserSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Username] nvarchar(max)  NOT NULL,
-    [Password] nvarchar(max)  NOT NULL
+    [Password] nvarchar(max)  NOT NULL,
+    [Token] nvarchar(max)  NULL,
+    [Balance] float  NOT NULL
 );
 GO
 
 -- Creating table 'OrderSet'
 CREATE TABLE [dbo].[OrderSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [UserId] int  NOT NULL
+    [UserId] int  NOT NULL,
+    [OrderDate] datetime  NOT NULL
 );
 GO
 
