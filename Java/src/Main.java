@@ -14,7 +14,7 @@ public class Main {
                 storeService.getBalance(token)
             );
 
-            
+
 
             for (OrderList orderList : storeService.getOrders(token).getOrderList()) {
                 System.out.println(orderList.getId());
